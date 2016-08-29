@@ -1,25 +1,12 @@
-# CloudFlare
+<?php
 
-CloudFlare PHP SDK to communicate with [CloudFlare API  v4](https://api.cloudflare.com/).
-
-Under development. Use it as **your own risks!**
-
-## Installation
-
-Clone the repository and run composer update.
-
-## Example
-
-The below code snippet is what you will find under the example folder:
-
-```php
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 use EmiViada\Cloudflare\Cloudflare;
 
 $options = [
     'email' => 'your@email.com',
-    'api_key' => 'YourAPIkEYHere'
+    'api_key' => 'YourApiKeyHere'
 ];
 $api = new Cloudflare($options);
 $responseZones = json_decode($api->getZones(array('name' => 'midomain.com')), true);
@@ -46,9 +33,8 @@ if ($responseZones['success']) {
     ]);
 
     // List dns records
-    $dnsResponse = $api->getDnsRecords($zoneId, array('per_page' => 30));
+    $dnsResponse = $api->getDnsRecords($zoneId, array('per_page' => 300));
 
     // Delete dns record
     $dnsDelete = $api->deleteDnsRecord($zoneId, $recordId);
 }
-```
